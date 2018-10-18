@@ -1,0 +1,16 @@
+#include <cstdio>
+#include <cstdlib>
+#include "testCamera.h"
+
+int main(int argc, char *argv[]){
+  
+  DemoInit();
+
+  char command[256] = "focus 1000";
+
+  DemoControl(command);
+
+  DemoExit();
+
+  return EXIT_SUCCESS;
+}

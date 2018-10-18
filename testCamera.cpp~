@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "testCamera.h"
+
+int main(int argc, char *argv[]){
+  
+  //SetParam(argc, argv);
+  if (strcmp(argv[1], "1")==0)
+    
+  DemoInit();
+
+  char command[256] = "focus 10";
+
+  DemoControl(command);
+
+  char c;
+  scanf("%c", &c);
+  DemoExit();
+
+  return EXIT_SUCCESS;
+}
