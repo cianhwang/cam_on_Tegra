@@ -101,4 +101,6 @@ communication_jetson.o: communication_jetson.c communication.h \
 		types_util.h \
 		debug_util.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o communication_jetson.o communication_jetson.c
+clean:
+	rm -f *.o
 

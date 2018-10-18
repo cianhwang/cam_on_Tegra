@@ -9,7 +9,12 @@ int main(int argc, char *argv[]){
   //char *argv2[] = {"./testCamera", "-id", "0", "-w", "3840", "-h", "2160", "-fps", "30"};
   //SetParam(9, argv2);
   if (strcmp(argv[1], "0")==0){
-    strcat(command, argv[2]);    
+    int a = atoi(argv[2]);
+    if (a > 1023){a = 1023;}
+    if (a < 1){a = 1;}
+    char aa[256];
+    sprintf(aa, "%d", a);
+    strcat(command, aa);
   }
   else if (strcmp(argv[1], "1")==0){
     FILE *f = fopen("focus.txt", "r");

@@ -66,8 +66,8 @@ int DemoInit()
 {
     printf("Demo Initialize\n");
 
-    char command[COMMAND_MAX];
-    int ret;
+    //char command[COMMAND_MAX];
+    //int ret;
 
     g_sensor_id = GetSensID();
 
@@ -79,22 +79,22 @@ int DemoInit()
     g_div_y  = GetPDAFHeight();
     g_fps    = GetFPS();
 
-    ReadSettingFile();
+    //ReadSettingFile();
 
-    MessageQueueSend("quit");
+    //MessageQueueSend("quit");
 
-    sprintf(command, "%s %d %d %d %d &", PathPreview, g_sensor_id, g_width, g_height, g_fps);
-    ret = system(command);
-    if (ret != 0)
-    {
-        printf("[Error]: %s (ret=%d)\n", command, WEXITSTATUS(ret));
-    }
+    //sprintf(command, "%s %d %d %d %d &", PathPreview, g_sensor_id, g_width, g_height, g_fps);
+    //ret = system(command);
+    //if (ret != 0)
+    //{
+    //    printf("[Error]: %s (ret=%d)\n", command, WEXITSTATUS(ret));
+    //}
 
-    usleep(1000 * 1000);
+    //usleep(1000 * 1000);
 
     printf("Demo Start\n");
 
-    //OIS_Init();
+    //OIS_Init(); //required in initialized step.
 
     return 1;
 }
