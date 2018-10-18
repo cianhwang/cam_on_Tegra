@@ -94,7 +94,7 @@ int DemoInit()
 
     printf("Demo Start\n");
 
-    OIS_Init();
+    //OIS_Init();
 
     return 1;
 }
