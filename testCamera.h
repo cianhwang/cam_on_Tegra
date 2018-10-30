@@ -14,7 +14,7 @@ extern "C"
 {
 void SetParam(int argc, char *argv[]);
 int GetSensID();
-int DemoInit();
+int DemoInit(int flag);
 int DemoExit();
 int DemoControl(char *commandLine);
 }
