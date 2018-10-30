@@ -46,7 +46,7 @@ either expressed or implied, of the FreeBSD Project.
 /***************************************************************
  *  Declare function for DEMO Control
  **************************************************************/
-int DemoInit();
+int DemoInit(int flag);
 int DemoExit();
 int DemoControl(char *commandLine);
 int ReadSettingFile();

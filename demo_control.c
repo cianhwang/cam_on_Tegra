@@ -62,7 +62,7 @@ char PathHighspeed[PATH_MAX]    = "/home/nvidia/demo/script/highspeed.sh";
  *
  * @return  Success 1
  ******************************************************************************/
-int DemoInit()
+int DemoInit(int flag)
 {
     printf("Demo Initialize\n");
 
@@ -93,9 +93,10 @@ int DemoInit()
     //usleep(1000 * 1000);
 
     printf("Demo Start\n");
-
-    //OIS_Init(); //required in initialized step.
-
+	
+    if (flag){
+        OIS_Init(); //required in initialized step.
+    }
     return 1;
 }
 

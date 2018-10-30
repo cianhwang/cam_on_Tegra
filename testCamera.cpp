@@ -6,23 +6,24 @@
 int main(int argc, char *argv[]){
   
   char command[256] = "focus ";
-  //char *argv2[] = {"./testCamera", "-id", "0", "-w", "3840", "-h", "2160", "-fps", "30"};
-  //SetParam(9, argv2);
-  if (strcmp(argv[1], "0")==0){
-    int a = atoi(argv[2]);
+  SetParam(argc, argv);
+  int flag = 0;
+  for (int i = 0; i < argc; ++i){
+  if (strcmp(argv[i], "-set")==0){
+    int a = atoi(argv[i+1]);
     if (a > 1023){a = 1023;}
     if (a < 1){a = 1;}
     char aa[256];
     sprintf(aa, "%d", a);
     strcat(command, aa);
   }
-  else if (strcmp(argv[1], "1")==0){
+  else if (strcmp(argv[i], "-mod")==0){
     FILE *f = fopen("focus.txt", "r");
     char *curr = NULL;
     size_t sz = 0;
     getline(&curr, &sz, f);
     int a = atoi(curr);
-    int b = atoi(argv[2]);
+    int b = atoi(argv[i+1]);
     int c = a+b;
     if (c > 1023){ c = 1023;}
     if (c< 0){c = 0;}
@@ -33,7 +34,7 @@ int main(int argc, char *argv[]){
     free(curr);
     fclose(f);
   }
-  else if (strcmp(argv[1], "2")==0){
+  else if (strcmp(argv[i], "-return")==0){
     FILE *f = fopen("focus.txt", "r");
     char *curr = NULL;
     size_t sz = 0;
@@ -43,12 +44,16 @@ int main(int argc, char *argv[]){
     fclose(f);
     return EXIT_SUCCESS;
   }
+  else if (strcmp(argv[i], "-init") == 0){
+    flag = 1;
+  }
+}
 
-  DemoInit();
+  DemoInit(flag);
 
   DemoControl(command);
 
-FILE *f = fopen("focus.txt", "w");
+  FILE *f = fopen("focus.txt", "w");
   const char *p = &command[6];
   fprintf(f, p);
   fclose(f);
