@@ -8,6 +8,13 @@ int main(int argc, char *argv[]){
   char command[256] = "focus ";
   SetParam(argc, argv);
   int flag = 0;
+  char fileName[] = "focus0";
+  for (int i = 0; i < argc; ++i){
+      if (strcmp(argv[i], "-id")==0){
+	fileName[5] = argv[i+1][0];
+	}
+  }
+  
   for (int i = 0; i < argc; ++i){
   if (strcmp(argv[i], "-set")==0){
     int a = atoi(argv[i+1]);
@@ -18,7 +25,7 @@ int main(int argc, char *argv[]){
     strcat(command, aa);
   }
   else if (strcmp(argv[i], "-mod")==0){
-    FILE *f = fopen("focus.txt", "r");
+    FILE *f = fopen(fileName, "r");
     char *curr = NULL;
     size_t sz = 0;
     getline(&curr, &sz, f);
@@ -35,7 +42,7 @@ int main(int argc, char *argv[]){
     fclose(f);
   }
   else if (strcmp(argv[i], "-return")==0){
-    FILE *f = fopen("focus.txt", "r");
+    FILE *f = fopen(fileName, "r");
     char *curr = NULL;
     size_t sz = 0;
     getline(&curr, &sz, f);
@@ -53,7 +60,7 @@ int main(int argc, char *argv[]){
 
   DemoControl(command);
 
-  FILE *f = fopen("focus.txt", "w");
+  FILE *f = fopen(fileName, "w");
   const char *p = &command[6];
   fprintf(f, p);
   fclose(f);
